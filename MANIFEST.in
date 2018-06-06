@@ -1,0 +1,7 @@
+include MANIFEST.in
+include *.md
+include requirements.txt
+graft pytest_mockservers
+prune tests
+global-exclude __pycache__
+global-exclude *.py[co]
