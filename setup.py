@@ -15,7 +15,7 @@ with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
 
 setup(
     name='pytest-mockservers',
-    version='0.1.0',
+    version='0.1.1.dev0',
     description='A set of fixtures to test your requests to HTTP/UDP servers',
     long_description=long_description,
     long_description_content_type='text/markdown',
