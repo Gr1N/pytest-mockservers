@@ -1,3 +1,23 @@
-aiohttp<=4.0.0
-pytest<=4.0.0
-pytest-asyncio<=1.0.0
+# This file generated from `pyproject.toml` by running commands:
+#   - poetry install --no-dev
+#   - poetry run pip freeze > requirements.txt
+#
+# This file needed only for integration with PyUP.
+#
+# Do not forget to regenerate in case you've added new dependency
+# in `pyproject.toml`.
+aiohttp==3.3.2
+async-timeout==3.0.0
+atomicwrites==1.1.5
+attrs==18.1.0
+chardet==3.0.4
+idna==2.7
+idna-ssl==1.1.0
+more-itertools==4.2.0
+multidict==4.3.1
+pluggy==0.6.0
+py==1.5.4
+pytest==3.6.3
+pytest-asyncio==0.8.0
+six==1.11.0
+yarl==1.2.6

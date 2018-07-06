@@ -14,7 +14,7 @@ matrix:
       env: TOXENV=py36-tests
 
 install:
-  - pip install tox
+  - pip install poetry tox
 
 script:
   - tox

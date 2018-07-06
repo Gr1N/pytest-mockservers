@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "pytest-mockservers"
+version = "0.2.0-alpha.0"
+description = "A set of fixtures to test your requests to HTTP/UDP servers"
+authors = [
+    "Nikita Grishko <gr1n@protonmail.com>"
+]
+license = "MIT"
+
+readme = "README.md"
+
+homepage = "https://github.com/Gr1N/pytest-mockservers"
+repository = "https://github.com/Gr1N/pytest-mockservers"
+
+keywords = ["asyncio", "pytest", "plugin", "http", "upd", "mock"]
+
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+aiohttp = "^3.0.0"
+pytest = "^3.0.0"
+pytest-asyncio = "0.*"
+
+[tool.poetry.dev-dependencies]
+black = "*"
+flake8 = "*"
+flake8-bugbear = "*"
+isort = "*"
+mypy = "*"
+pytest = "*"
+tox = "^3.0.0"
+
+[tool.poetry.plugins."pytest11"]
+http_server = "pytest_mockservers.http_server"
+udp_server = "pytest_mockservers.udp_server"
