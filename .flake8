@@ -1,8 +1,5 @@
 [flake8]
-ignore =
-    # E501: line too long (82 > 79 characters)
-    E501,
-    # E731: do not assign a lambda expression, use a def
-    E731
-max-line-length = 120
-statistics = True
+ignore = E203, E266, E501, W503
+max-line-length = 88
+max-complexity = 18
+select = B,C,E,F,W,T4,B9

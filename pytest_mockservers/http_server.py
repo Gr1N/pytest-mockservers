@@ -1,21 +1,11 @@
 from typing import Type
 
 import pytest
-from aiohttp import (
-    web,
-    web_urldispatcher,
-)
+from aiohttp import web, web_urldispatcher
 
 
 class Server:
-    __slots__ = (
-        '_host',
-        '_port',
-        '_shutdown_timeout',
-
-        '_app',
-        '_app_runner',
-    )
+    __slots__ = "_host", "_port", "_shutdown_timeout", "_app", "_app_runner"
 
     @property
     def host(self):
@@ -51,18 +41,18 @@ class Server:
             self._app_runner,
             host=self._host,
             port=self._port,
-            shutdown_timeout=self._shutdown_timeout
+            shutdown_timeout=self._shutdown_timeout,
         ).start()
 
     async def close(self) -> None:
         await self._app_runner.cleanup()
 
 
-@pytest.fixture()
+@pytest.fixture
 def http_server(unused_tcp_port_factory) -> Server:
-    return Server(host='0.0.0.0', port=unused_tcp_port_factory())
+    return Server(host="0.0.0.0", port=unused_tcp_port_factory())
 
 
-@pytest.fixture()
+@pytest.fixture
 def http_server_factory() -> Type[Server]:
     return Server

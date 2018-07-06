@@ -1,10 +1,7 @@
 import asyncio
 import contextlib
 import socket
-from asyncio import (
-    AbstractEventLoop,
-    DatagramProtocol,
-)
+from asyncio import AbstractEventLoop, DatagramProtocol
 from typing import Type
 
 import pytest
@@ -16,18 +13,16 @@ class DefaultProtocol(DatagramProtocol):
 
 
 class Server:
-    __slots__ = (
-        '_host',
-        '_port',
+    __slots__ = "_host", "_port", "_loop", "_protocol", "_transport"
 
-        '_loop',
-        '_protocol',
-        '_transport',
-    )
-
-    def __init__(self, *, host: str, port: int,
-                 loop: AbstractEventLoop = None,
-                 protocol: DatagramProtocol = None) -> None:
+    def __init__(
+        self,
+        *,
+        host: str,
+        port: int,
+        loop: AbstractEventLoop = None,
+        protocol: DatagramProtocol = None
+    ) -> None:
         self._host = host
         self._port = port
 
@@ -37,8 +32,7 @@ class Server:
 
     async def __aenter__(self):
         listen = self._loop.create_datagram_endpoint(
-            self._protocol,
-            local_addr=(self._host, self._port)
+            self._protocol, local_addr=(self._host, self._port)
         )
         self._transport, _ = await listen
 
@@ -50,7 +44,7 @@ class Server:
 @pytest.fixture()
 def unused_udp_port():
     with contextlib.closing(socket.socket(type=socket.SOCK_DGRAM)) as sock:
-        sock.bind(('127.0.0.1', 0))
+        sock.bind(("127.0.0.1", 0))
         return sock.getsockname()[1]
 
 
