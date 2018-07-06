@@ -31,7 +31,7 @@ To run tests and linters use command below:
 
 If you want to run only tests or linters you can explicitly specify which test environment you want to run, e.g.:
 
-    $ poetry run tox -e py36-tests
+    $ poetry run tox -e py37-tests
 
 ## License
 

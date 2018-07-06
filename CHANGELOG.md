@@ -1,13 +1,9 @@
-Changelog for pytest-mockservers
-================================
+# Changelog for pytest-mockservers
 
-0.1.1 (unreleased)
-------------------
+## 0.2.0 (unreleased)
 
-- Nothing changed yet.
+- Python 3.7 support
 
-
-0.1.0 (2018-06-06)
-------------------
+## 0.1.0 (2018-06-06)
 
 - Initial implementation.
