@@ -21,7 +21,7 @@ class Server:
         host: str,
         port: int,
         loop: AbstractEventLoop = None,
-        protocol: DatagramProtocol = None
+        protocol: DatagramProtocol = None,
     ) -> None:
         self._host = host
         self._port = port
