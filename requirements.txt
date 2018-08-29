@@ -6,7 +6,7 @@
 #
 # Do not forget to regenerate in case you've added new dependency
 # in `pyproject.toml`.
-aiohttp==3.4.0
+aiohttp==3.4.1
 async-timeout==3.0.0
 atomicwrites==1.2.0
 attrs==18.1.0
