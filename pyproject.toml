@@ -19,7 +19,7 @@ exclude = '''
 
 [tool.poetry]
 name = "pytest-mockservers"
-version = "0.3.0-alpha.0"
+version = "0.3.0"
 description = "A set of fixtures to test your requests to HTTP/UDP servers"
 authors = [
     "Nikita Grishko <gr1n@protonmail.com>"
