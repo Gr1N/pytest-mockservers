@@ -1,3 +1,5 @@
+import contextlib
+import socket
 from typing import Type
 
 import pytest
@@ -48,9 +50,38 @@ class Server:
         await self._app_runner.cleanup()
 
 
+def _unused_port():
+    with contextlib.closing(
+        socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
+    ) as sock:
+        sock.bind(("127.0.0.1", 0))
+        return sock.getsockname()[1]
+
+
 @pytest.fixture
-def http_server(unused_tcp_port_factory) -> Server:
-    return Server(host="0.0.0.0", port=unused_tcp_port_factory())
+def unused_port():
+    _unused_port()
+
+
+@pytest.fixture
+def unused_port_factory():
+    produced = set()
+
+    def factory():
+        port = _unused_port()
+        while port in produced:
+            port = _unused_port()
+
+        produced.add(port)
+
+        return port
+
+    return factory
+
+
+@pytest.fixture
+def http_server(unused_port_factory) -> Server:
+    return Server(host="0.0.0.0", port=unused_port_factory())
 
 
 @pytest.fixture

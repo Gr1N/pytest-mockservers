@@ -41,21 +41,25 @@ class Server:
         self._transport = None
 
 
-@pytest.fixture()
-def unused_udp_port():
+def _unused_udp_port():
     with contextlib.closing(socket.socket(type=socket.SOCK_DGRAM)) as sock:
         sock.bind(("127.0.0.1", 0))
         return sock.getsockname()[1]
 
 
-@pytest.fixture()
+@pytest.fixture
+def unused_udp_port():
+    return _unused_udp_port()
+
+
+@pytest.fixture
 def unused_udp_port_factory():
     produced = set()
 
     def factory():
-        port = unused_udp_port()
+        port = _unused_udp_port()
         while port in produced:
-            port = unused_udp_port()
+            port = _unused_udp_port()
 
         produced.add(port)
 
@@ -64,6 +68,6 @@ def unused_udp_port_factory():
     return factory
 
 
-@pytest.fixture()
+@pytest.fixture
 def udp_server_factory() -> Type[Server]:
     return Server

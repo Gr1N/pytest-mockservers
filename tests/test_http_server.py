@@ -10,7 +10,7 @@ pytestmark = pytest.mark.asyncio
 async def test_http_server(http_server):
     calls = 0
 
-    def handler(request):
+    async def handler(request):
         nonlocal calls
         calls += 1
 
@@ -28,16 +28,16 @@ async def test_http_server(http_server):
     assert calls == 1
 
 
-async def test_http_server_factory(http_server_factory, unused_tcp_port_factory):
+async def test_http_server_factory(http_server_factory, unused_port_factory):
     calls = 0
 
-    def handler(request):
+    async def handler(request):
         nonlocal calls
         calls += 1
 
         return web.json_response({"foo": "bar"})
 
-    httpserver = http_server_factory(host="0.0.0.0", port=unused_tcp_port_factory())
+    httpserver = http_server_factory(host="0.0.0.0", port=unused_port_factory())
     httpserver.router.add_get("/foo", handler)
 
     async with httpserver:
