@@ -6,6 +6,8 @@ Available fixtures:
 
 * `http_server`
 * `http_server_factory`
+* `unused_port`
+* `unused_port_factory`
 * `unused_udp_port`
 * `unused_udp_port_factory`
 * `udp_server_factory`
