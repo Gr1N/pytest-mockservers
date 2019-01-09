@@ -15,7 +15,7 @@ idna==2.7
 idna-ssl==1.1.0
 more-itertools==4.3.0
 multidict==4.5.2
-pluggy==0.8.0
+pluggy==0.8.1
 py==1.7.0
 pytest==4.0.1
 pytest-asyncio==0.9.0
