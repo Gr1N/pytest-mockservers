@@ -1,5 +1,9 @@
 # Changelog for pytest-mockservers
 
+## 0.4.0 (2019-02-04)
+
+- Tech release
+
 ## 0.3.0 (2018-11-25)
 
 - `pytest>=4.0.0` support
