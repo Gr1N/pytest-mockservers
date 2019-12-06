@@ -1,5 +1,7 @@
 # Changelog for pytest-mockservers
 
+## 0.6.0 (20XX-XX-XX)
+
 ## 0.5.0 (2019-12-06)
 
 - Use the same address for checking port availability and starting server, #68 by @maxleonov
