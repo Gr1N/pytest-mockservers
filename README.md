@@ -1,4 +1,6 @@
-# pytest-mockservers [![Build Status](https://travis-ci.org/Gr1N/pytest-mockservers.svg?branch=master)](https://travis-ci.org/Gr1N/pytest-mockservers) [![Updates](https://pyup.io/repos/github/Gr1N/pytest-mockservers/shield.svg)](https://pyup.io/repos/github/Gr1N/pytest-mockservers/) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+# pytest-mockservers
+
+[![Build Status](https://travis-ci.org/Gr1N/pytest-mockservers.svg?branch=master)](https://travis-ci.org/Gr1N/pytest-mockservers) ![PyPI](https://img.shields.io/pypi/v/pytest-mockservers.svg?label=pypi%20version) ![PyPI - Downloads](https://img.shields.io/pypi/dm/pytest-mockservers.svg?label=pypi%20downloads) ![GitHub](https://img.shields.io/github/license/Gr1N/pytest-mockservers.svg)
 
 `pytest-mockservers` package provides a set of fixtures which can help you to test your code in cases when you need to check that requests which you sent to HTTP/UDP server are really sent.
 
