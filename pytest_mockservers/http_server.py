@@ -63,7 +63,7 @@ def unused_port():
     _unused_port()
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def unused_port_factory():
     produced = set()
 
