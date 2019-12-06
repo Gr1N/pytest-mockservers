@@ -1,5 +1,10 @@
 # Changelog for pytest-mockservers
 
+## 0.5.0 (2019-12-06)
+
+- Use the same address for checking port availability and starting server, #68 by @maxleonov
+- Added Python 3.8 support, #69
+
 ## 0.4.0 (2019-02-04)
 
 - Tech release
