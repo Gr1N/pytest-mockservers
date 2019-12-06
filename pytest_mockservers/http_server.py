@@ -81,7 +81,7 @@ def unused_port_factory():
 
 @pytest.fixture
 def http_server(unused_port_factory) -> Server:
-    return Server(host="0.0.0.0", port=unused_port_factory())
+    return Server(host="127.0.0.1", port=unused_port_factory())
 
 
 @pytest.fixture
