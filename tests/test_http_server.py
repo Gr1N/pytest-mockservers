@@ -1,13 +1,16 @@
 from http import HTTPStatus
+from typing import Callable, Type
 
 import aiohttp
 import pytest
 from aiohttp import web
 
+from pytest_mockservers import HTTPServer
+
 pytestmark = pytest.mark.asyncio
 
 
-async def test_http_server(http_server):
+async def test_http_server(http_server: HTTPServer) -> None:
     calls = 0
 
     async def handler(request):
@@ -28,7 +31,9 @@ async def test_http_server(http_server):
     assert calls == 1
 
 
-async def test_http_server_factory(http_server_factory, unused_port_factory):
+async def test_http_server_factory(
+    http_server_factory: Type[HTTPServer], unused_port_factory: Callable[[], int]
+) -> None:
     calls = 0
 
     async def handler(request):
