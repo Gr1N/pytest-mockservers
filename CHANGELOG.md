@@ -1,6 +1,8 @@
 # Changelog for pytest-mockservers
 
-## 0.6.0 (20XX-XX-XX)
+## 0.6.0 (2020-03-31)
+
+- Improved type hints
 
 ## 0.5.0 (2019-12-06)
 
