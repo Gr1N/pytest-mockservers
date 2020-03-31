@@ -1,3 +1,4 @@
+
 # Created by https://www.gitignore.io/api/osx,python,visualstudiocode
 
 ### OSX ###
@@ -49,6 +50,7 @@ lib64/
 parts/
 sdist/
 var/
+pip-wheel-metadata/
 wheels/
 *.egg-info/
 .installed.cfg
@@ -67,7 +69,6 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
-.tox/
 .coverage
 .coverage.*
 .cache
@@ -137,3 +138,6 @@ venv.bak/
 
 ### asdf ###
 .tool-versions
+
+### poetry ###
+get-poetry.py

@@ -27,7 +27,7 @@ class Server:
         self._shutdown_timeout = shutdown_timeout
 
         self._app = web.Application()
-        self._app_runner: web.AppRunner = None
+        self._app_runner: web.AppRunner
 
     async def __aenter__(self):
         await self.serve()
