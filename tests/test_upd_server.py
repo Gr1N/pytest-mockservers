@@ -1,14 +1,19 @@
 import asyncio
 from asyncio import DatagramProtocol
+from typing import Callable, Type
 
 import pytest
+
+from pytest_mockservers import UDPServer
 
 pytestmark = pytest.mark.asyncio
 
 
 async def test_udp_server_factory(
-    event_loop, udp_server_factory, unused_udp_port_factory
-):
+    event_loop: asyncio.AbstractEventLoop,
+    udp_server_factory: Type[UDPServer],
+    unused_udp_port_factory: Callable[[], int],
+) -> None:
     calls = 0
 
     class ServerProtocol(DatagramProtocol):

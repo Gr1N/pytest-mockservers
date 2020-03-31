@@ -1,20 +1,22 @@
 import contextlib
 import socket
-from typing import Type
+from typing import Callable, Type
 
 import pytest
 from aiohttp import web, web_urldispatcher
 
+__all__ = ("HTTPServer",)
 
-class Server:
-    __slots__ = "_host", "_port", "_shutdown_timeout", "_app", "_app_runner"
+
+class HTTPServer:
+    __slots__ = ("_host", "_port", "_shutdown_timeout", "_app", "_app_runner")
 
     @property
-    def host(self):
+    def host(self) -> str:
         return self._host
 
     @property
-    def port(self):
+    def port(self) -> int:
         return self._port
 
     @property
@@ -50,7 +52,7 @@ class Server:
         await self._app_runner.cleanup()
 
 
-def _unused_port():
+def _unused_port() -> int:
     with contextlib.closing(
         socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
     ) as sock:
@@ -59,15 +61,15 @@ def _unused_port():
 
 
 @pytest.fixture
-def unused_port():
-    _unused_port()
+def unused_port() -> int:
+    return _unused_port()
 
 
 @pytest.fixture
-def unused_port_factory():
+def unused_port_factory() -> Callable[[], int]:
     produced = set()
 
-    def factory():
+    def factory() -> int:
         port = _unused_port()
         while port in produced:
             port = _unused_port()
@@ -80,10 +82,10 @@ def unused_port_factory():
 
 
 @pytest.fixture
-def http_server(unused_port_factory) -> Server:
-    return Server(host="127.0.0.1", port=unused_port_factory())
+def http_server(unused_port_factory: Callable[[], int]) -> HTTPServer:
+    return HTTPServer(host="127.0.0.1", port=unused_port_factory())
 
 
 @pytest.fixture
-def http_server_factory() -> Type[Server]:
-    return Server
+def http_server_factory() -> Type[HTTPServer]:
+    return HTTPServer
