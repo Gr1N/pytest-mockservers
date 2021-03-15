@@ -2,7 +2,7 @@ import asyncio
 import contextlib
 import socket
 from asyncio import AbstractEventLoop, DatagramProtocol
-from typing import Callable, Optional, Type
+from typing import Callable, Optional, Type, Union
 
 import pytest
 
@@ -23,7 +23,7 @@ class UDPServer:
         host: str,
         port: int,
         loop: Optional[AbstractEventLoop] = None,
-        protocol: Optional[Type[DatagramProtocol]] = None,
+        protocol: Optional[Type[Union[DatagramProtocol, Callable]]] = None,
     ) -> None:
         self._host = host
         self._port = port
