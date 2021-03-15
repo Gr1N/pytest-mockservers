@@ -15,7 +15,7 @@ class DefaultProtocol(DatagramProtocol):
 
 
 class UDPServer:
-    __slots__ = ("_host", "_port", "_loop", "_protocol", "_transport")
+    __slots__ = ("_host", "_port", "_loop", "_protocol", "_transport", "_protocol_instance")
 
     def __init__(
         self,
@@ -30,13 +30,14 @@ class UDPServer:
 
         self._loop = loop or asyncio.get_event_loop()
         self._protocol = protocol or DefaultProtocol
+        self._protocol_instance = None
         self._transport = None
 
     async def __aenter__(self):
         listen = self._loop.create_datagram_endpoint(
             self._protocol, local_addr=(self._host, self._port)
         )
-        self._transport, _ = await listen
+        self._transport, self._protocol_instance = await listen
 
     async def __aexit__(self, exc_type, exc, tb):
         self._transport.close()
