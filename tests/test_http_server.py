@@ -42,7 +42,7 @@ async def test_http_server_factory(
 
         return web.json_response({"foo": "bar"})
 
-    httpserver = http_server_factory(host="0.0.0.0", port=unused_port_factory())
+    httpserver = http_server_factory(host="127.0.0.1", port=unused_port_factory())
     httpserver.router.add_get("/foo", handler)
 
     async with httpserver:
